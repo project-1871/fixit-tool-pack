@@ -1,0 +1,224 @@
+{
+  "_comment": "Manifest of free Linux diagnostic/repair tools. Package names drift slightly between distros' repos — install-tools.sh detects the package manager (apt/dnf/pacman/zypper) and uses the matching field below; if a name is wrong for your distro's current repo, the script reports it as failed rather than silently skipping, so you can 'search' for the current name. Virtually everything here is open source and free for any use — Linux tooling doesn't have the personal-vs-commercial licensing traps some Windows freeware does.",
+  "tools": [
+    {
+      "name": "smartmontools",
+      "category": "Storage",
+      "purpose": "SMART health/attributes for HDD/SSD/NVMe (smartctl) — catch a failing drive before you build or sell on top of one.",
+      "install": "pkg",
+      "pkgApt": "smartmontools", "pkgDnf": "smartmontools", "pkgPacman": "smartmontools", "pkgZypper": "smartmontools",
+      "license": "open-source-free"
+    },
+    {
+      "name": "nvme-cli",
+      "category": "Storage",
+      "purpose": "NVMe-specific health, SMART log, and firmware info that smartctl doesn't always expose.",
+      "install": "pkg",
+      "pkgApt": "nvme-cli", "pkgDnf": "nvme-cli", "pkgPacman": "nvme-cli", "pkgZypper": "nvme-cli",
+      "license": "open-source-free"
+    },
+    {
+      "name": "gsmartcontrol",
+      "category": "Storage",
+      "purpose": "GUI front-end for smartmontools — easier to hand a drive report to someone non-technical.",
+      "install": "pkg",
+      "pkgApt": "gsmartcontrol", "pkgDnf": "gsmartcontrol", "pkgPacman": "gsmartcontrol", "pkgZypper": "gsmartcontrol",
+      "license": "open-source-free"
+    },
+    {
+      "name": "testdisk",
+      "category": "Storage",
+      "purpose": "Partition-table recovery and file undelete (bundles PhotoRec) — for a wiped partition table or deleted files.",
+      "install": "pkg",
+      "pkgApt": "testdisk", "pkgDnf": "testdisk", "pkgPacman": "testdisk", "pkgZypper": "testdisk",
+      "license": "open-source-free"
+    },
+    {
+      "name": "GParted",
+      "category": "Storage",
+      "purpose": "Partition editor GUI — resize/create/delete/format partitions.",
+      "install": "pkg",
+      "pkgApt": "gparted", "pkgDnf": "gparted", "pkgPacman": "gparted", "pkgZypper": "gparted",
+      "license": "open-source-free"
+    },
+    {
+      "name": "ncdu",
+      "category": "Storage",
+      "purpose": "Terminal disk-usage analyzer — find what's eating a drive without a GUI (WinDirStat equivalent).",
+      "install": "pkg",
+      "pkgApt": "ncdu", "pkgDnf": "ncdu", "pkgPacman": "ncdu", "pkgZypper": "ncdu",
+      "license": "open-source-free"
+    },
+    {
+      "name": "lm_sensors",
+      "category": "System Info",
+      "purpose": "Temperature/voltage/fan sensor readings (`sensors` command) — first check for a thermal-shutdown or fan-speed complaint.",
+      "install": "pkg",
+      "pkgApt": "lm-sensors", "pkgDnf": "lm_sensors", "pkgPacman": "lm_sensors", "pkgZypper": "sensors",
+      "license": "open-source-free",
+      "licenseNote": "Package name is the field most likely to have drifted for your distro version — if install fails, search your package manager for 'sensors'."
+    },
+    {
+      "name": "inxi",
+      "category": "System Info",
+      "purpose": "One-command full system report (CPU, GPU, RAM, disks, network) — fastest way to see the whole machine at once.",
+      "install": "pkg",
+      "pkgApt": "inxi", "pkgDnf": "inxi", "pkgPacman": "inxi", "pkgZypper": "inxi",
+      "license": "open-source-free"
+    },
+    {
+      "name": "lshw",
+      "category": "System Info",
+      "purpose": "Detailed hardware lister — exact model/revision info, good for verifying what a listing actually contains before resale.",
+      "install": "pkg",
+      "pkgApt": "lshw", "pkgDnf": "lshw", "pkgPacman": "lshw", "pkgZypper": "lshw",
+      "license": "open-source-free"
+    },
+    {
+      "name": "mesa-utils",
+      "category": "GPU",
+      "purpose": "glxinfo/glxgears — confirms which GPU/driver OpenGL is actually rendering through (catches 'stuck on the wrong GPU' on hybrid graphics laptops).",
+      "install": "pkg",
+      "pkgApt": "mesa-utils", "pkgDnf": "glx-utils", "pkgPacman": "mesa-utils", "pkgZypper": "Mesa-demo-x",
+      "license": "open-source-free",
+      "licenseNote": "Package name varies the most of anything in this list across distros — if it fails, search for 'glxinfo'."
+    },
+    {
+      "name": "radeontop",
+      "category": "GPU",
+      "purpose": "Live AMD GPU usage monitor (like nvidia-smi, for AMD) — relevant if the machine has an AMD card.",
+      "install": "pkg",
+      "pkgApt": "radeontop", "pkgDnf": "radeontop", "pkgPacman": "radeontop", "pkgZypper": "radeontop",
+      "license": "open-source-free"
+    },
+    {
+      "name": "htop",
+      "category": "Utilities",
+      "purpose": "Interactive process/resource monitor.",
+      "install": "pkg",
+      "pkgApt": "htop", "pkgDnf": "htop", "pkgPacman": "htop", "pkgZypper": "htop",
+      "license": "open-source-free"
+    },
+    {
+      "name": "btop",
+      "category": "Utilities",
+      "purpose": "Modern resource monitor (CPU/mem/disk/net/proc in one view).",
+      "install": "pkg",
+      "pkgApt": "btop", "pkgDnf": "btop", "pkgPacman": "btop", "pkgZypper": "btop",
+      "license": "open-source-free",
+      "licenseNote": "Not in the repos of older distro releases (e.g. Ubuntu 20.04, Debian 11) — use htop there instead, or a Flatpak/manual build."
+    },
+    {
+      "name": "stress-ng",
+      "category": "Memory & CPU",
+      "purpose": "CPU/memory/disk stress and burn-in testing — reproduces a load-triggered crash or checks stability after a repair.",
+      "install": "pkg",
+      "pkgApt": "stress-ng", "pkgDnf": "stress-ng", "pkgPacman": "stress-ng", "pkgZypper": "stress-ng",
+      "license": "open-source-free"
+    },
+    {
+      "name": "rkhunter",
+      "category": "Malware",
+      "purpose": "Rootkit Hunter — scans for known rootkit signatures, suspicious file permissions, hidden files.",
+      "install": "pkg",
+      "pkgApt": "rkhunter", "pkgDnf": "rkhunter", "pkgPacman": "rkhunter", "pkgZypper": "rkhunter",
+      "license": "open-source-free"
+    },
+    {
+      "name": "chkrootkit",
+      "category": "Malware",
+      "purpose": "Second, independent rootkit checker — run alongside rkhunter rather than instead of it (different detection methods, catches different things).",
+      "install": "pkg",
+      "pkgApt": "chkrootkit", "pkgDnf": "chkrootkit", "pkgPacman": "chkrootkit", "pkgZypper": "chkrootkit",
+      "license": "open-source-free"
+    },
+    {
+      "name": "ClamAV",
+      "category": "Malware",
+      "purpose": "On-demand antivirus scanner. Run `freshclam` after install to fetch current virus definitions before scanning.",
+      "install": "pkg",
+      "pkgApt": "clamav", "pkgDnf": "clamav", "pkgPacman": "clamav", "pkgZypper": "clamav",
+      "license": "open-source-free"
+    },
+    {
+      "name": "nmap",
+      "category": "Networking",
+      "purpose": "Network/port scanner — what's actually listening, what's reachable.",
+      "install": "pkg",
+      "pkgApt": "nmap", "pkgDnf": "nmap", "pkgPacman": "nmap", "pkgZypper": "nmap",
+      "license": "open-source-free"
+    },
+    {
+      "name": "mtr",
+      "category": "Networking",
+      "purpose": "Combined ping + traceroute, live-updating — better first tool than either alone for 'is it my network or the destination'.",
+      "install": "pkg",
+      "pkgApt": "mtr", "pkgDnf": "mtr", "pkgPacman": "mtr", "pkgZypper": "mtr",
+      "license": "open-source-free"
+    },
+    {
+      "name": "iperf3",
+      "category": "Networking",
+      "purpose": "Throughput test between two machines — isolates 'slow network' to Wi-Fi/cable/switch vs. the far end.",
+      "install": "pkg",
+      "pkgApt": "iperf3", "pkgDnf": "iperf3", "pkgPacman": "iperf3", "pkgZypper": "iperf3",
+      "license": "open-source-free"
+    },
+    {
+      "name": "ethtool",
+      "category": "Networking",
+      "purpose": "NIC link speed/duplex/driver diagnostics — catches a cable/port negotiating at 100Mbps instead of gigabit, etc.",
+      "install": "pkg",
+      "pkgApt": "ethtool", "pkgDnf": "ethtool", "pkgPacman": "ethtool", "pkgZypper": "ethtool",
+      "license": "open-source-free"
+    },
+    {
+      "name": "Memtest86+",
+      "category": "Memory & CPU",
+      "purpose": "Bootable RAM stress test — the standard way to confirm or rule out bad memory. Fully open source (unlike PassMark's commercial MemTest86, used in the Windows kit). Many distros' installers already add it as a GRUB boot-menu entry by default — check the GRUB menu before installing anything.",
+      "install": "manual",
+      "manualUrl": "https://www.memtest.org/",
+      "license": "open-source-free"
+    },
+    {
+      "name": "Ventoy",
+      "category": "Boot & Recovery",
+      "purpose": "Multi-ISO bootable USB — put Memtest86+, a distro live ISO, and Rescuezilla on one stick, boot any of them from a menu.",
+      "install": "manual",
+      "manualUrl": "https://www.ventoy.net/",
+      "license": "open-source-free",
+      "licenseNote": "Arch-based distros have it as AUR package 'ventoy-bin' instead of a manual download."
+    },
+    {
+      "name": "Rescuezilla",
+      "category": "Boot & Recovery",
+      "purpose": "Full-disk imaging/cloning from a bootable live environment — backup before a risky repair, or restore a known-good image.",
+      "install": "manual",
+      "manualUrl": "https://rescuezilla.com/",
+      "license": "open-source-free"
+    },
+    {
+      "name": "balenaEtcher",
+      "category": "Boot & Recovery",
+      "purpose": "Flashes an ISO/IMG to a USB drive with checksum verification.",
+      "install": "manual",
+      "manualUrl": "https://etcher.balena.io/",
+      "license": "open-source-free",
+      "licenseNote": "Also available as a Flatpak (io.balena.Etcher on Flathub) if you'd rather use a package manager than an AppImage."
+    }
+  ],
+  "builtinDiagnostics": {
+    "_comment": "Ships with virtually every modern Linux distro (systemd + coreutils + filesystem utils) — zero cost, use before installing anything third-party. If the problem is a crashed/segfaulted process specifically, use the existing 'diagnose-crash' skill instead of re-deriving coredump analysis here.",
+    "commands": [
+      { "cmd": "journalctl -p 3 -xb", "purpose": "Errors and worse from the current boot — usually the fastest way to find what actually broke." },
+      { "cmd": "dmesg -T | tail -80", "purpose": "Kernel ring buffer with human-readable timestamps — hardware/driver errors show up here first." },
+      { "cmd": "systemd-analyze blame", "purpose": "Ranks services by how long they took at boot — pinpoints what's making boot slow." },
+      { "cmd": "systemd-analyze critical-chain", "purpose": "Shows the dependency chain that determined total boot time." },
+      { "cmd": "systemctl --failed", "purpose": "Lists every systemd unit that failed to start." },
+      { "cmd": "coredumpctl list", "purpose": "Lists recent crash coredumps. If one's here, hand off to the 'diagnose-crash' skill." },
+      { "cmd": "df -h", "purpose": "Per-filesystem space usage at a glance; follow up with ncdu for a breakdown." },
+      { "cmd": "fsck -f /dev/sdXN", "purpose": "Filesystem check/repair (target must be unmounted — boot from a live USB to check the root filesystem)." },
+      { "cmd": "btrfs device stats /mountpoint", "purpose": "Read/write/corruption error counters, for a btrfs filesystem specifically." }
+    ]
+  }
+}

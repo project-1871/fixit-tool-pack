@@ -1,0 +1,239 @@
+{
+  "_comment": "Manifest of free Windows diagnostic/repair tools for the fixit kit. 'license' is the real EULA category, not just 'is it $0' — a few well-known freeware tools restrict free use to personal/non-commercial, which matters since these PCs are being tested for resale. 'install' is 'winget' (scripted by install-tools.ps1) or 'manual' (documented URL, install by hand once).",
+  "tools": [
+    {
+      "name": "HWiNFO",
+      "category": "System Info",
+      "purpose": "Deep hardware inventory + live sensors (temps, voltages, clocks, SMART) — first stop for 'what's actually in this PC and is it healthy'.",
+      "install": "winget",
+      "wingetId": "REALiX.HWiNFO",
+      "license": "freeware-personal-only",
+      "licenseNote": "Free for personal/home use per REALiX's EULA; commercial use (which testing PCs for resale may count as) technically requires a license. Prefer LibreHardwareMonitor or Sysinternals for anything you'd call business use."
+    },
+    {
+      "name": "CPU-Z",
+      "category": "System Info",
+      "purpose": "CPU/motherboard/RAM identification (exact model, timings, revision) — good for verifying what a listing actually contains.",
+      "install": "winget",
+      "wingetId": "CPUID.CPU-Z",
+      "license": "freeware-free-for-all",
+      "licenseNote": "No personal/commercial distinction in CPUID's EULA."
+    },
+    {
+      "name": "GPU-Z",
+      "category": "System Info",
+      "purpose": "GPU identification + sensors, also reads VRAM health and BIOS version.",
+      "install": "winget",
+      "wingetId": "TechPowerUp.GPU-Z",
+      "license": "freeware-free-for-all"
+    },
+    {
+      "name": "LibreHardwareMonitor",
+      "category": "System Info",
+      "purpose": "Open-source sensor monitor (temps/fans/voltages/clocks) — the commercial-use-safe alternative to HWiNFO/Speccy.",
+      "install": "winget",
+      "wingetId": "LibreHardwareMonitor.LibreHardwareMonitor",
+      "license": "open-source-free"
+    },
+    {
+      "name": "CrystalDiskInfo",
+      "category": "Storage",
+      "purpose": "SMART health/attributes for HDD/SSD/NVMe — catches failing drives before you build or sell on top of one.",
+      "install": "winget",
+      "wingetId": "CrystalDewWorld.CrystalDiskInfo",
+      "license": "open-source-free"
+    },
+    {
+      "name": "CrystalDiskMark",
+      "category": "Storage",
+      "purpose": "Sequential/random read-write benchmark — confirms an SSD/NVMe is actually hitting its rated speed (e.g. not running at SATA speed in an NVMe slot, or a fake/counterfeit drive).",
+      "install": "winget",
+      "wingetId": "CrystalDewWorld.CrystalDiskMark",
+      "license": "open-source-free"
+    },
+    {
+      "name": "WinDirStat",
+      "category": "Storage",
+      "purpose": "Visual disk-space usage breakdown — find what's eating a drive.",
+      "install": "winget",
+      "wingetId": "WinDirStat.WinDirStat",
+      "license": "open-source-free"
+    },
+    {
+      "name": "Rescuezilla",
+      "category": "Storage",
+      "purpose": "Full-disk imaging/cloning (backup before risky repairs, or wipe-and-restore a known-good image). Bootable ISO, not an installed app.",
+      "install": "manual",
+      "manualUrl": "https://rescuezilla.com/",
+      "license": "open-source-free",
+      "licenseNote": "Named instead of Macrium Reflect Free, which Macrium discontinued for new users in 2023."
+    },
+    {
+      "name": "MemTest86 (Free Edition)",
+      "category": "Memory",
+      "purpose": "Bootable RAM stress test — the standard way to confirm or rule out bad memory as a crash cause.",
+      "install": "manual",
+      "manualUrl": "https://www.memtest86.com/download.htm",
+      "license": "freeware-free-for-all",
+      "licenseNote": "Free edition is free for any use; not reliably on winget, grab the ISO directly."
+    },
+    {
+      "name": "Malwarebytes (Free)",
+      "category": "Malware",
+      "purpose": "On-demand malware/PUP scan — free tier has no real-time protection, but scans and removes for free.",
+      "install": "winget",
+      "wingetId": "Malwarebytes.Malwarebytes",
+      "license": "freeware-check-business-terms",
+      "licenseNote": "Free consumer edition; if this ever becomes a for-profit repair shop rather than occasional resale prep, check Malwarebytes' business terms."
+    },
+    {
+      "name": "AdwCleaner",
+      "category": "Malware",
+      "purpose": "Removes adware/browser hijackers/PUPs that general AV often leaves behind.",
+      "install": "winget",
+      "wingetId": "Malwarebytes.AdwCleaner",
+      "license": "freeware-free-for-all"
+    },
+    {
+      "name": "Farbar Recovery Scan Tool (FRST)",
+      "category": "Malware",
+      "purpose": "Produces a deep system diagnostic log (startups, services, drivers, browser policy) for manual malware triage — the tool malware-removal forums standardize on.",
+      "install": "manual",
+      "manualUrl": "https://www.bleepingcomputer.com/download/farbar-recovery-scan-tool/",
+      "license": "freeware-free-for-all"
+    },
+    {
+      "name": "Windows Defender Offline",
+      "category": "Malware",
+      "purpose": "Boots to a clean pre-OS environment to scan/remove rootkits that hide from a running Windows. Built into Windows, launch from Windows Security > Virus & threat protection > Scan options.",
+      "install": "builtin",
+      "license": "included-with-windows"
+    },
+    {
+      "name": "Display Driver Uninstaller (DDU)",
+      "category": "Drivers",
+      "purpose": "Fully wipes GPU drivers (leftover files/registry keys included) before a clean reinstall — fixes driver-corruption crashes normal uninstall can't.",
+      "install": "manual",
+      "manualUrl": "https://www.wagnardsoft.com/",
+      "license": "freeware-free-for-all"
+    },
+    {
+      "name": "Snappy Driver Installer Origin (SDIO)",
+      "category": "Drivers",
+      "purpose": "Offline driver database + installer — bring a system with no network driver online, or bulk-update drivers on a machine you're refurbishing.",
+      "install": "manual",
+      "manualUrl": "https://sourceforge.net/projects/snappy-driver-installer-origin/",
+      "license": "open-source-free"
+    },
+    {
+      "name": "Ventoy",
+      "category": "Boot & Recovery",
+      "purpose": "Multi-ISO bootable USB — drop MemTest86, a Windows install ISO, Rescuezilla, and more on one stick, boot any of them from a menu.",
+      "install": "winget",
+      "wingetId": "Ventoy.Ventoy",
+      "license": "open-source-free"
+    },
+    {
+      "name": "Rufus",
+      "category": "Boot & Recovery",
+      "purpose": "Single bootable-USB creator for a Windows install ISO.",
+      "install": "winget",
+      "wingetId": "Rufus.Rufus",
+      "license": "open-source-free"
+    },
+    {
+      "name": "Windows Media Creation Tool",
+      "category": "Boot & Recovery",
+      "purpose": "Official Microsoft tool to download a clean Windows 10/11 ISO or make an install USB directly.",
+      "install": "manual",
+      "manualUrl": "https://www.microsoft.com/software-download/windows11",
+      "license": "included-with-windows"
+    },
+    {
+      "name": "Sysinternals Process Explorer",
+      "category": "Sysinternals (Microsoft)",
+      "purpose": "Advanced Task Manager replacement — see what a process is really doing, DLLs loaded, handles held.",
+      "install": "winget",
+      "wingetId": "Microsoft.Sysinternals.ProcessExplorer",
+      "license": "freeware-free-for-all",
+      "licenseNote": "Microsoft-owned, redistributable, no personal/commercial restriction."
+    },
+    {
+      "name": "Sysinternals Autoruns",
+      "category": "Sysinternals (Microsoft)",
+      "purpose": "Every autostart location in one view (services, scheduled tasks, startup folders, browser extensions) — the fast way to find what's slowing boot or persisting malware.",
+      "install": "winget",
+      "wingetId": "Microsoft.Sysinternals.Autoruns",
+      "license": "freeware-free-for-all"
+    },
+    {
+      "name": "Sysinternals TCPView",
+      "category": "Sysinternals (Microsoft)",
+      "purpose": "Live view of every network connection and the process that owns it — useful when something's phoning home or hogging bandwidth.",
+      "install": "winget",
+      "wingetId": "Microsoft.Sysinternals.TCPView",
+      "license": "freeware-free-for-all"
+    },
+    {
+      "name": "Sysinternals Process Monitor",
+      "category": "Sysinternals (Microsoft)",
+      "purpose": "Real-time file/registry/process activity trace — for root-causing 'why does this app fail' when the error message is useless.",
+      "install": "winget",
+      "wingetId": "Microsoft.Sysinternals.ProcessMonitor",
+      "license": "freeware-free-for-all"
+    },
+    {
+      "name": "7-Zip",
+      "category": "Utilities",
+      "purpose": "Archive tool, also handy for extracting driver/tool packages that ship as self-extracting zips.",
+      "install": "winget",
+      "wingetId": "7zip.7zip",
+      "license": "open-source-free"
+    },
+    {
+      "name": "Notepad++",
+      "category": "Utilities",
+      "purpose": "Read logs/config files comfortably.",
+      "install": "winget",
+      "wingetId": "Notepad++.Notepad++",
+      "license": "open-source-free"
+    },
+    {
+      "name": "Git for Windows",
+      "category": "Utilities",
+      "purpose": "Provides git + a bash environment; some Claude Code features (version control awareness) expect git to be present.",
+      "install": "winget",
+      "wingetId": "Git.Git",
+      "license": "open-source-free"
+    },
+    {
+      "name": "Windows Terminal",
+      "category": "Utilities",
+      "purpose": "Modern terminal host for PowerShell — nicer place to run Claude Code than legacy conhost.",
+      "install": "winget",
+      "wingetId": "Microsoft.WindowsTerminal",
+      "license": "included-with-windows"
+    },
+    {
+      "name": "PowerShell 7",
+      "category": "Utilities",
+      "purpose": "Current cross-platform PowerShell; some winget/module behavior is smoother here than on the Windows-10-era 5.1 that ships in the box.",
+      "install": "winget",
+      "wingetId": "Microsoft.PowerShell",
+      "license": "open-source-free"
+    }
+  ],
+  "builtinDiagnostics": {
+    "_comment": "Already on every Windows install, zero cost, use before reaching for third-party tools.",
+    "commands": [
+      { "cmd": "sfc /scannow", "purpose": "Scans and repairs corrupted Windows system files. Run in an elevated PowerShell/cmd." },
+      { "cmd": "DISM /Online /Cleanup-Image /CheckHealth", "purpose": "Checks the component store for corruption (fast, read-only)." },
+      { "cmd": "DISM /Online /Cleanup-Image /ScanHealth", "purpose": "Deeper component-store corruption scan (read-only, slower)." },
+      { "cmd": "DISM /Online /Cleanup-Image /RestoreHealth", "purpose": "Repairs component-store corruption found above. Needs internet or a Windows install-media source." },
+      { "cmd": "chkdsk C: /f /r", "purpose": "Checks and repairs a drive's file system and bad sectors. Requires a reboot if run against the boot volume." },
+      { "cmd": "Get-WinEvent -LogName System -MaxEvents 50", "purpose": "Recent System event log — first place to look for a crash's actual error/event ID." },
+      { "cmd": "perfmon /rel", "purpose": "Opens Reliability Monitor — a timeline of crashes/installs/failures, often the fastest way to correlate 'when did this start'." },
+      { "cmd": "mdsched.exe", "purpose": "Windows Memory Diagnostic — built-in RAM test, schedules a reboot-time scan (less thorough than MemTest86 but zero-install)." }
+    ]
+  }
+}

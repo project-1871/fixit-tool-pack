@@ -1,0 +1,165 @@
+{
+  "_comment": "Manifest of free macOS diagnostic/repair tools, installed via Homebrew (brew formula) or Homebrew Cask (brew-cask, for GUI apps). IMPORTANT PLATFORM NOTE: Apple Silicon Macs (M1/M2/M3/M4) can only boot Apple-signed macOS/RecoveryOS images — there is no equivalent of booting a generic Linux/Windows rescue USB (no Boot Camp, no arbitrary ISO boot, unlike Intel Macs). Entries tagged 'platformNote' below are Intel-only or limited on Apple Silicon; see CLAUDE.md's Boot & Recovery section for the Apple-Silicon-safe alternatives (Recovery Mode, Apple Diagnostics, DFU restore via Apple Configurator 2).",
+  "tools": [
+    {
+      "name": "smartmontools",
+      "category": "Storage",
+      "purpose": "SMART health/attributes (smartctl) — most useful here for external/USB/SATA drives; Apple's own internal NVMe SSDs expose limited SMART data to third-party tools by design.",
+      "install": "brew",
+      "brewId": "smartmontools",
+      "license": "open-source-free"
+    },
+    {
+      "name": "GrandPerspective",
+      "category": "Storage",
+      "purpose": "Open-source disk-usage visualizer — free alternative to the paid DaisyDisk.",
+      "install": "brew-cask",
+      "brewId": "grandperspective",
+      "license": "open-source-free"
+    },
+    {
+      "name": "testdisk",
+      "category": "Storage",
+      "purpose": "Partition-table recovery and file undelete (bundles PhotoRec).",
+      "install": "brew",
+      "brewId": "testdisk",
+      "license": "open-source-free"
+    },
+    {
+      "name": "ncdu",
+      "category": "Storage",
+      "purpose": "Terminal disk-usage analyzer.",
+      "install": "brew",
+      "brewId": "ncdu",
+      "license": "open-source-free"
+    },
+    {
+      "name": "Stats",
+      "category": "System Info",
+      "purpose": "Menu-bar system monitor — CPU, GPU, RAM, disk, network, sensors, battery. Free, open source (MIT) — the real alternative to the paid iStat Menus, not a stripped-down trial.",
+      "install": "brew-cask",
+      "brewId": "stats",
+      "license": "open-source-free"
+    },
+    {
+      "name": "htop",
+      "category": "Utilities",
+      "purpose": "Interactive process/resource monitor for the terminal.",
+      "install": "brew",
+      "brewId": "htop",
+      "license": "open-source-free"
+    },
+    {
+      "name": "btop",
+      "category": "Utilities",
+      "purpose": "Modern resource monitor (CPU/mem/disk/net/proc in one view).",
+      "install": "brew",
+      "brewId": "btop",
+      "license": "open-source-free"
+    },
+    {
+      "name": "iTerm2",
+      "category": "Utilities",
+      "purpose": "Open-source terminal replacement — nicer environment to run Claude Code in than Terminal.app.",
+      "install": "brew-cask",
+      "brewId": "iterm2",
+      "license": "open-source-free"
+    },
+    {
+      "name": "nmap",
+      "category": "Networking",
+      "purpose": "Network/port scanner.",
+      "install": "brew",
+      "brewId": "nmap",
+      "license": "open-source-free"
+    },
+    {
+      "name": "mtr",
+      "category": "Networking",
+      "purpose": "Combined ping + traceroute, live-updating.",
+      "install": "brew",
+      "brewId": "mtr",
+      "license": "open-source-free"
+    },
+    {
+      "name": "iperf3",
+      "category": "Networking",
+      "purpose": "Throughput test between two machines.",
+      "install": "brew",
+      "brewId": "iperf3",
+      "license": "open-source-free"
+    },
+    {
+      "name": "ClamAV",
+      "category": "Malware",
+      "purpose": "CLI antivirus scanner. Run `freshclam` after install to fetch current definitions.",
+      "install": "brew",
+      "brewId": "clamav",
+      "license": "open-source-free"
+    },
+    {
+      "name": "Malwarebytes",
+      "category": "Malware",
+      "purpose": "Free on-demand malware/PUP scanner for Mac.",
+      "install": "brew-cask",
+      "brewId": "malwarebytes",
+      "license": "freeware-check-business-terms",
+      "licenseNote": "Free consumer edition; if this becomes a for-profit repair business rather than occasional resale prep, check Malwarebytes' business terms."
+    },
+    {
+      "name": "mas",
+      "category": "Utilities",
+      "purpose": "Mac App Store CLI — script the reinstall of App-Store-sourced apps during a refurb.",
+      "install": "brew",
+      "brewId": "mas",
+      "license": "open-source-free"
+    },
+    {
+      "name": "balenaEtcher",
+      "category": "Boot & Recovery",
+      "purpose": "Flashes an ISO/IMG to a USB drive with checksum verification.",
+      "install": "brew-cask",
+      "brewId": "balenaetcher",
+      "license": "open-source-free",
+      "platformNote": "Only useful for building non-macOS boot media (e.g. a Linux live USB) on an Intel Mac. An Apple Silicon Mac cannot boot the resulting media at all — see CLAUDE.md."
+    },
+    {
+      "name": "Ventoy",
+      "category": "Boot & Recovery",
+      "purpose": "Multi-ISO bootable USB creator.",
+      "install": "manual",
+      "manualUrl": "https://www.ventoy.net/",
+      "license": "open-source-free",
+      "platformNote": "Intel Mac only, and even there Startup Security Utility (from Recovery Mode) must be set to allow booting from external/untrusted media first. Not usable at all on Apple Silicon."
+    },
+    {
+      "name": "Rescuezilla",
+      "category": "Boot & Recovery",
+      "purpose": "Full-disk imaging/cloning from a bootable live environment.",
+      "install": "manual",
+      "manualUrl": "https://rescuezilla.com/",
+      "license": "open-source-free",
+      "platformNote": "Intel Mac only — same Startup Security Utility caveat as Ventoy above. On Apple Silicon, use Time Machine or `asr` (built-in Apple Software Restore) for imaging instead."
+    }
+  ],
+  "builtinDiagnostics": {
+    "_comment": "Ships with every Mac, zero cost. The Boot & Recovery entries here are the ones that actually work on Apple Silicon — check `uname -m` (arm64 vs x86_64) or the Apple menu > About This Mac before proposing any boot-media-based fix, since the two platforms diverge completely here.",
+    "commands": [
+      { "cmd": "system_profiler SPHardwareDataType", "purpose": "Exact model, chip, serial — confirms what the machine actually is before diagnosing further." },
+      { "cmd": "system_profiler SPStorageDataType", "purpose": "Storage overview, volume layout." },
+      { "cmd": "diskutil list", "purpose": "Disk/partition layout." },
+      { "cmd": "diskutil verifyVolume /", "purpose": "Checks (non-destructively) the boot volume's filesystem for errors; use verifyDisk for the whole disk." },
+      { "cmd": "log show --last 1h --predicate 'messageType == 16 OR messageType == 17'", "purpose": "Recent error/fault-level entries from the unified log — the journalctl/Event Viewer equivalent." },
+      { "cmd": "vm_stat", "purpose": "Memory pressure and paging activity." },
+      { "cmd": "pmset -g therm", "purpose": "Thermal throttling state — useful for a 'runs hot and slows down' complaint." },
+      { "cmd": "spindump <pid>", "purpose": "Samples a hung/unresponsive process to see what it's stuck doing (built-in, like a lightweight Process Monitor trace)." }
+    ],
+    "bootAndRecovery": [
+      { "name": "macOS Recovery Mode", "howTo": "Intel: hold Cmd+R at startup. Apple Silicon: hold the Power button until \"Loading startup options\" appears, then choose Options.", "purpose": "Reinstall macOS, Disk Utility, Terminal, Safari for support articles — the primary rescue environment on every Mac, including Apple Silicon." },
+      { "name": "Apple Diagnostics", "howTo": "Intel: hold D at startup. Apple Silicon: hold Power at startup until options appear, then Cmd+D.", "purpose": "Free built-in hardware test (logic board, memory, etc.) — gives a reference code, no software to install." },
+      { "name": "Safe Mode", "howTo": "Intel: hold Shift at startup. Apple Silicon: hold Power until \"Loading startup options,\" select the disk, then hold Shift and click \"Continue in Safe Mode.\"", "purpose": "Boots with minimal extensions/caches — isolates a boot problem caused by a third-party kernel extension or login item." },
+      { "name": "DFU restore via Apple Configurator 2", "howTo": "Free from the Mac App Store; requires a second Mac and the right cable.", "purpose": "The Apple Silicon equivalent of a full firmware/OS nuke-and-reinstall, for a Mac that won't boot at all — there is no bootable-USB-rescue path on these machines, this is the real fallback." },
+      { "name": "Migration Assistant", "howTo": "Applications > Utilities, or from within Recovery Mode.", "purpose": "Built-in data transfer between Macs." }
+    ]
+  }
+}
