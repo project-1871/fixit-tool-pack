@@ -6,7 +6,7 @@
 
 <p align="center">
   A portable, all-free PC diagnostic/repair kit for Windows, macOS, and Linux,<br>
-  with Claude Code as the on-machine diagnostic assistant.
+  with Claude Code as the on-machine diagnostic assistant — under 200KB, one file.
 </p>
 
 ---
@@ -24,10 +24,6 @@ first. The page reads its own file location to build correct absolute
 paths, so it works no matter what drive letter or folder it ends up in.
 It never executes anything on its own — every button just puts text on
 your clipboard.
-
-The whole toolkit — every platform, every script, the interface itself —
-comes in at **under 200KB**. Small enough to email, keep a dozen copies
-of, or drop on the smallest USB stick you own with room to spare.
 
 ## Quick start
 
