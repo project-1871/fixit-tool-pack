@@ -25,6 +25,10 @@ paths, so it works no matter what drive letter or folder it ends up in.
 It never executes anything on its own — every button just puts text on
 your clipboard.
 
+The whole toolkit — every platform, every script, the interface itself —
+comes in at **under 200KB**. Small enough to email, keep a dozen copies
+of, or drop on the smallest USB stick you own with room to spare.
+
 ## Quick start
 
 1. Clone or download this repo.
